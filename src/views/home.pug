@@ -3,8 +3,8 @@ include mixins/video.pug
 
 block content 
     h2 Welcome here you will see the treding videos
-    each potato in videos 
-        +video(potato)
+    each video in videos 
+        +video(video)
     else 
         li Sorry nothing found.
     
