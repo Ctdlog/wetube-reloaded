@@ -1,7 +1,11 @@
 extends base.pug
 include mixins/video.pug
 
-block content 
+block content
+    nav 
+                ul 
+                    li 
+                        a(href="/videos/upload") Upload Video
     h2 Welcome here you will see the treding videos
     each video in videos 
         +video(video)
