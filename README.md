@@ -5,10 +5,10 @@
 /login -> Login
 /search -> Search
 
-/users/:id -> See User
-/users/logout -> Log Out
-/users/edit -> Edit MY Profile
-/users/delete -> Delete MY Profile
+/user/:id -> See User
+/user/logout -> Log Out
+/user/edit -> Edit MY Profile
+/user/delete -> Delete MY Profile
 
 /videos/:id -> Watch Video
 /videos/:id/edit -> Edit Video
