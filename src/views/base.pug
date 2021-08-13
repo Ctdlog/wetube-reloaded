@@ -12,6 +12,8 @@ html(lang="ko")
                         a(href="/") Home
                     if loggedIn 
                         li 
+                            a(href="/user/edit") Edit Profile
+                        li 
                             a(href="/user/logout") Log out
                         li 
                             a(href="/my-profile") #{loggedInUser.name}님의 Profile
