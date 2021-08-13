@@ -10,22 +10,22 @@ html(lang="ko")
                 ul 
                     li 
                         a(href="/") Home
+                    li
+                        a(href="/search") Search
                     if loggedIn 
                         li 
+                            a(href="/my-profile") #{loggedInUser.name}님의 Profile
+                        li 
                             a(href="/user/edit") Edit Profile
+                        li
+                            a(href="/videos/upload") Upload Video
                         li 
                             a(href="/user/logout") Log out
-                        li 
-                            a(href="/my-profile") #{loggedInUser.name}님의 Profile
                     else
                         li 
                             a(href="/join") Join
                         li 
                             a(href="/login") Login
-                    li
-                        a(href="/search") Search
-                    li
-                        a(href="/videos/upload") Upload Video
 
         main
             block content

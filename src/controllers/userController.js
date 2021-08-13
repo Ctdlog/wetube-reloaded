@@ -2,6 +2,7 @@ import User from "../models/User";
 import fetch from "node-fetch";
 import bcrypt from "bcrypt";
 import { token } from "morgan";
+import session from "express-session";
 
 export const getJoin = (req, res) =>
   res.render("join", { pageTitle: "Create Account" });
@@ -146,7 +147,40 @@ export const getEdit = (req, res) => {
   return res.render("edit-profile", { pageTitle: "Edit Profile" });
 };
 
-export const postEdit = (req, res) => {
-  return res.render("edit-profile");
+export const postEdit = async (req, res) => {
+  const {
+    session: {
+      user: { _id, email: sessionEmail, username: sessionUsername },
+    },
+    body: { name, email, username, location },
+  } = req;
+  let searchParam = [];
+  if (sessionEmail !== email) {
+    searchParam.push({ email });
+  }
+  if (sessionUsername !== username) {
+    searchParam.push({ username });
+  }
+  if (searchParam.length > 0) {
+    const findUser = await User.findOne({ $or: searchParam });
+    if (findUser && findUser._id.toString() !== _id) {
+      return res.status(HTTP_BAD_REQUEST).render("edit-profile", {
+        pageTitle: "Edit Profile",
+        errorMessage: "This username/email is already taken.",
+      });
+    }
+  }
+  const updatedUser = await User.findByIdAndUpdate(
+    _id,
+    {
+      name,
+      email,
+      username,
+      location,
+    },
+    { new: true }
+  );
+  req.session.user = updatedUser;
+  return res.redirect("/user/edit");
 };
 export const see = (req, res) => res.send("See User");
