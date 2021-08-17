@@ -14,7 +14,7 @@ html(lang="ko")
                         a(href="/search") Search
                     if loggedIn 
                         li 
-                            a(href="/my-profile") #{loggedInUser.name}님의 Profile
+                            a(href=`/user/${loggedInUser._id}`) My Profile
                         li 
                             a(href="/user/edit") Edit Profile
                         li
@@ -31,6 +31,7 @@ html(lang="ko")
             block content
     include partials/footer.pug
                    
+                        
 
             
             
