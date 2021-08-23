@@ -27,7 +27,11 @@ app.use(
 
 app.use(localsMiddleware);
 app.use("/uploads", express.static("uploads"));
-app.use("/assets", express.static("assets"));
+app.use(
+  "/assets",
+  express.static("assets"),
+  express.static("node_modules/@ffmpeg/core/dist")
+);
 app.use("/", rootRouter);
 app.use("/videos", videoRouter);
 app.use("/user", userRouter);
