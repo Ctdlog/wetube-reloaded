@@ -19,9 +19,9 @@ header
                             span 😀
                         else
                             if loggedInUser.avatarUrl.includes("s3")
-                                img.header__avatar(src=loggedInUser.avatarUrl, crossorigin)
+                                img.header__avatar(src=loggedInUser.avatarUrl crossorigin)
                             else
-                                img.header__avatar(src="/" + loggedInUser.avatarUrl, crossorigin)
+                                img.header__avatar(src="/" + loggedInUser.avatarUrl crossorigin)
                             
                                 
             else
