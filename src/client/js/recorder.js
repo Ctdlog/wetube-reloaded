@@ -76,7 +76,7 @@ const handleStart = () => {
   actionBtn.disabled = true;
   actionBtn.removeEventListener("click", handleStart);
 
-  recorder = new MediaRecorder(stream, { MimeType: "video/webm" });
+  recorder = new window.MediaRecorder(stream, { MimeType: "video/webm" });
   recorder.ondataavailable = (event) => {
     videoFile = URL.createObjectURL(event.data);
     video.srcObject = null;
