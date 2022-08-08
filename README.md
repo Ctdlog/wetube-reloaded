@@ -53,4 +53,3 @@ The file has to include MONGO_URL, PORT, COOKIE_SECRET, GITHUB_CLIENT_ID, GITHUB
 
 # Deploy
 Heroku & AWS S3 </br>
-https://what-tube.herokuapp.com/
